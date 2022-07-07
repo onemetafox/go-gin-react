@@ -15,6 +15,6 @@ func NewHealthController() HealthController {
 // Healthcheck is to return app condition
 func (c *healthController) Check(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
-		"status": "ok",
+		"status": "ok This is the test of the api",
 	})
 }
