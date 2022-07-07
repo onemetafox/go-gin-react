@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"github.com/roylisto/gin-golang-react/api"
+	"github.com/todaycodemaster/go-gin-react/api"
 )
 
 var (
