@@ -1,12 +1,16 @@
-package db
+package database
 
 import (
 	"os"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
+type Database struct{
+	*gorm.DB
+}
 
 var Db *gorm.DB
+
 func InitDb() *gorm.DB {
 	Db = connectDB()
 	return Db
