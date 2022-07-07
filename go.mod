@@ -1,4 +1,4 @@
-module github.com/roylisto/gin-golang-react
+module github.com/todaycodemaster/go-gin-react
 
 go 1.16
 
