@@ -17,9 +17,8 @@ func NewWelcomeController() WelcomeController {
 
 // Healthcheck is to return app condition
 func (c *welcomeController) Login(ctx *gin.Context) {
-
 	ctx.JSON(200, gin.H{
-		"status": "ok This is the test of the api",
+		"status": ctx.Request,
 	})
 }
 func (c *welcomeController) Register(ctx *gin.Context) {

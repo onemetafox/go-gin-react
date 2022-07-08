@@ -18,19 +18,27 @@ type User struct {
 	Articles []Article
 }
 
-func SaveUser(User *User)  int {
-	if User.id != 0{
-		result := db.Save(User)
-		if result.Error != nil{
-			return 0
+func SaveUser(data map[string]interface{})  (int, error) {
+	if data["id"] != nil{
+		if err := db.Model(&User{}).Where("id = ?", data["id"].(int)).Updates(data).Error; err != nil {
+			return data["id"].(int), nil
+		}else{
+			return 0, err
 		}
-		return User.id
 	}else{
-		result := db.Create(User)
-		if result.Error != nil{
-			return 0
+		user := User{
+			first_name: 	data["first_name"].(string),
+			last_name:		data["last_name"].(string),
+			email: 			data["email"].(string),
+			phone: 			data["phone"].(string),
+			password: 		data["password"].(string),
 		}
-		return User.id
+		result := db.Create(&user)
+		if err := result.Error; err != nil {
+			return user.id, nil
+		}else{
+			return 0, err
+		}
 	}
 	
 }
